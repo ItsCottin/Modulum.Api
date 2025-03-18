@@ -53,8 +53,8 @@ builder.Services.AddApplicationServices();
 builder.Services.AddSharedInfrastructure(_configuration);
 builder.Services.RegisterSwagger();
 builder.Services.AddInfrastructureMappings();
-builder.Services.AddHangfire(x => x.UseSqlServerStorage(Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING")
-                           ?? _configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHangfire(x => x.UseSqlServerStorage(//Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING") ??
+                            _configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHangfireServer();
 builder.Services.AddControllers().AddValidators();
 builder.Services.AddRazorPages();

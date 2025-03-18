@@ -174,8 +174,8 @@ namespace modulum.Server.Extensions
             IConfiguration configuration)
             => services
                 .AddDbContext<ModulumContext>(options => options
-                    .UseSqlServer(Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING")
-                           ?? configuration.GetConnectionString("DefaultConnection")))
+                    .UseSqlServer(//Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING") ??
+                           configuration.GetConnectionString("DefaultConnection")))
             .AddTransient<IDatabaseSeeder, DatabaseSeeder>()
             ;
 
