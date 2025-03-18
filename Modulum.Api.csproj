@@ -41,4 +41,8 @@
     <Folder Include="Controllers\Utilities\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".github\workflows\main_modulum-api.yml" />
+  </ItemGroup>
+
 </Project>
