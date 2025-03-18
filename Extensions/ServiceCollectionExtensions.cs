@@ -279,7 +279,7 @@ namespace modulum.Server.Extensions
 #else
                                 c.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                                 c.Response.ContentType = "application/json";
-                                var result = JsonConvert.SerializeObject("Ocorreu um erro"));
+                                var result = JsonConvert.SerializeObject("Ocorreu um erro");
                                 return c.Response.WriteAsync(result);
 #endif
                             }
