@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "oxY65t0YMcPqX+ucYjugsJPo1UWub7bVLlCmN6YapPo=",
-  "Source": "modulum-api",
-  "BasePath": "_content/modulum-api",
+  "Hash": "jrd/cPJq1JQNjApNIgPCtz/mdu9IHnoDefDMN67RKyA=",
+  "Source": "Modulum.Api",
+  "BasePath": "_content/Modulum.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

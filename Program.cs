@@ -1,121 +1,122 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using modulum_api.Data;
-using modulum_api.Services;
-using Microsoft.AspNetCore.Identity;
+using System;
+using System.Threading.Tasks;
+using modulum.Infrastructure.Contexts;
+using modulum.Server.Extensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Filters;
-using Microsoft.Extensions.Options;
-using modulum_api.Filters;
-using modulum_api.Model;
-using modulum_api.Configuracao;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using modulum.Server.Settings;
+using System.Runtime.CompilerServices;
+using modulum.Application.Interfaces.Common;
+using modulum.Infrastructure.Extensions;
+using modulum.Application.Extensions;
+using Hangfire;
+using Microsoft.Extensions.FileProviders;
+using modulum.Server.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Configuration.SetBasePath(AppContext.BaseDirectory)
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    .AddJsonFile("appsettings.Development.json", optional: true)
-    .AddEnvironmentVariables();
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<modulum_api.Data.DbContext>(options =>
-    options.UseSqlServer(connectionString));
-
-builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
-{
-    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@. "; // Permitir @ e ponto
-}) // Achei - esse cara é o responsável por carregar endpoints do Framework Identity não listados no Controllers
-    .AddRoles<IdentityRole>()
-    .AddSignInManager<CustomSignInManager>()
-    .AddEntityFrameworkStores<modulum_api.Data.DbContext>();
-
-builder.Services.AddScoped<IRoleService, RoleService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(option =>
+builder.Services.AddSwaggerGen();
+builder.Services.AddApiVersioning(cfg =>
 {
-    option.AddSecurityDefinition("oauth2", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
-    });
-    option.SwaggerDoc
-    ("v1",
-        new OpenApiInfo
-        {
-            Title = "Documentação Swagger API Modulum",
-            Version = "v1",
-            Description = "Essa e a documentação swagger da API Modulum utilizando swagger UI com interface do ReDoc",
-            Contact = new OpenApiContact
-            {
-                Name = "Rodrigo Cotting Fontes",
-                Email = "cottingfontes@hotmail.com"
-            }
-        }
-    );
-    option.OperationFilter<SecurityRequirementsOperationFilter>();
-    option.OperationFilter<AddRequiredHeaderParameter>();
+    cfg.DefaultApiVersion = new ApiVersion(1, 0);
 });
 
-//builder.Services.AddCors(option => option.AddPolicy("wasm",
-//    policy => policy.WithOrigins(builder.Configuration["BackendUrl"] ?? "",
-//    builder.Configuration["FrontendUrl"] ?? "")
-//    .AllowAnyMethod()
-//    .AllowAnyHeader()
-//    .AllowCredentials()
-//    ));
+var _configuration = builder.Configuration;
 
-// Provisório - Permite acionamento da API de qualquer origem
+// Services - Avaliar quais métodos não são nescessários
+//builder.Services.AddForwarding(_configuration);
+builder.Services.AddLocalization(options =>
+{
+    options.ResourcesPath = "Resources";
+});
+
+builder.Services.AddCurrentUserService();
+builder.Services.AddSerialization();
+builder.Services.AddDatabase(_configuration);
+builder.Services.AddServerStorage(); //TODO - should implement ServerStorageProvider to work correctly!
+builder.Services.AddIdentity();
+builder.Services.AddJwtAuthentication(builder.Services.GetApplicationSettings(_configuration));
+builder.Services.AddSignalR();
+//builder.Services.AddApplicationLayer();
+builder.Services.AddApplicationServices();
+//builder.Services.AddRepositories();
+builder.Services.AddSharedInfrastructure(_configuration);
+builder.Services.RegisterSwagger();
+builder.Services.AddInfrastructureMappings();
+builder.Services.AddHangfire(x => x.UseSqlServerStorage(Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING")
+                           ?? _configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHangfireServer();
+builder.Services.AddControllers().AddValidators();
+builder.Services.AddRazorPages();
+//builder.Services.AddCredentialsCors();  // Meu primeiro método de Service fora do Program.cs - Nao deu certo
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()  // Permitir qualquer origem
-              .AllowAnyMethod()  // Permitir qualquer método (GET, POST, etc.)
-              .AllowAnyHeader(); // Permitir qualquer cabeçalho
+        policy.AllowAnyOrigin()   // Permite qualquer origem
+              .AllowAnyMethod()   // Permite qualquer método (GET, POST, etc.)
+              .AllowAnyHeader();  // Permite qualquer cabeçalho
     });
 });
 
+builder.Services.AddApiVersioning(config =>
+{
+    config.DefaultApiVersion = new ApiVersion(1, 0);
+    config.AssumeDefaultVersionWhenUnspecified = true;
+    config.ReportApiVersions = true;
+});
+builder.Services.AddLazyCache();
+// Services - fim
 
 var app = builder.Build();
 
-app.MapIdentityApi<IdentityUser>();
+app.UseForwarding(_configuration);  // Linha onde adiciona a politica de acesso na api
+//app.UseExceptionHandling(env);
 
-//app.UseCors("wasm");
 
-// Provisório - Permite acionamento da API de qualquer origem
+// FrameWork para Arquivo
+//app.UseBlazorFrameworkFiles();
+//app.UseStaticFiles();
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Files")),
+//    RequestPath = new PathString("/Files")
+//});
+
+app.UseRouting();
 app.UseCors("AllowAll");
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseHangfireDashboard("/jobs", new DashboardOptions
+{
+    //DashboardTitle = localizer["BlazorHero Jobs"],
+    Authorization = new[] { new HangfireAuthorizationFilter() }
+});
 
+app.ConfigureSwagger(); // Configuração do Swagger - Documentação da API
+app.UseEndpoints();
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-app.UseSwagger();
-app.UseSwaggerUI(options =>
-{
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "API Modulum");
-});
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
 //}
-app.UseReDoc(options =>
-{
-    options.DocumentTitle = "Swagger API Modulum Documentacao";
-    options.SpecUrl = "/swagger/v1/swagger.json";
-});
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.Initialize(_configuration);
 app.Run();
