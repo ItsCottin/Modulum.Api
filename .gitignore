@@ -1,0 +1,29 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Modulum.Api/FileContentIndex/2a2f7fee-3a87-4c35-94e4-4b580f7de7b8.vsidx
+/.vs/Modulum.Api/FileContentIndex/c0ea742b-a2b6-4cfc-93a4-0d062fc52529.vsidx
+/.vs/Modulum.Api/FileContentIndex/d12c5034-a09e-4ccc-8729-af3b0ca5df9c.vsidx
+/.vs/Modulum.Api/FileContentIndex/dba794b5-c8a3-432c-a877-d121a72f5f5a.vsidx
+/.vs/Modulum.Api/FileContentIndex/0502a0fd-c415-436b-b689-6538a3af3cce.vsidx
+/.vs/Modulum.Api/FileContentIndex
+/Error2025-03-18.log
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+/obj/Debug/net8.0/Modulum.Api.AssemblyInfo.cs
+/obj/Debug/net8.0/Modulum.Api.AssemblyInfoInputs.cache
