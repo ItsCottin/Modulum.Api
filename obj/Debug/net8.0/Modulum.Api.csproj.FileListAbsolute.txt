@@ -61,7 +61,6 @@ C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Enti
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
@@ -77,7 +76,6 @@ C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Exte
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Extensions.WebEncoders.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -119,7 +117,6 @@ C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Composi
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Composition.TypedParts.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Drawing.Common.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.Formats.Asn1.dll
 C:\_Programacao\_TesteNewArquiteture\Modulum.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

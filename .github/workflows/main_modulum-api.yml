@@ -26,6 +26,7 @@ jobs:
       - name: Set Connection String environment variable
         run: |
           echo "MODULUM_CONNECTION_STRING=${{ secrets.MODULUM_CONNECTION_STRING }}" >> $GITHUB_ENV
+          echo "MODULUM_SECRET_JWT=${{ secrets.MODULUM_SECRET_JWT }}" >> $GITHUB_ENV
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -59,4 +60,4 @@ jobs:
           app-name: 'modulum-api'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8A0607855A9340D78870F27330619880 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9C476B85F5B64639A88E1F5E8ED5275A }}

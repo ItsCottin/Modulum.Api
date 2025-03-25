@@ -22,7 +22,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="RCF.Modulum.Infrastructure" Version="0.0.1-beta.4" />
+    <PackageReference Include="RCF.Modulum.Application" Version="0.0.1-beta.4" />
+    <PackageReference Include="RCF.Modulum.Infrastructure" Version="0.0.1-beta.5" />
+    <PackageReference Include="RCF.Modulum.Infrastructure.Shared" Version="0.0.1-beta.4" />
+    <PackageReference Include="RCF.Modulum.Shared" Version="0.0.1-beta.5" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
     <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Serilog.Formatting.Compact" Version="3.0.0" />
@@ -30,12 +33,17 @@
     <PackageReference Include="Serilog.Sinks.Async" Version="2.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    
+    <!-- Pacotes proprios do projeto 
     <PackageReference Include="RCF.Modulum.Application" Version="0.0.1-beta.3" />
-    <!--<PackageReference Include="RCF.Modulum.Infrastructure" Version="0.0.1-beta.3" />-->
     <PackageReference Include="RCF.Modulum.Infrastructure.Shared" Version="0.0.1-beta.3" />
     <PackageReference Include="RCF.Modulum.Shared" Version="0.0.1-beta.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="RCF.Modulum.Infrastructure" Version="0.0.1-beta.4" /> -->
+    
   </ItemGroup>
+
+  <!-- Referencia dos proprios pacotes para debug -->
 
   <ItemGroup>
     <Folder Include="Controllers\Utilities\" />
@@ -44,5 +52,7 @@
   <ItemGroup>
     <None Include=".github\workflows\main_modulum-api.yml" />
   </ItemGroup>
+
+  
 
 </Project>

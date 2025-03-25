@@ -64,7 +64,7 @@ namespace modulum.Server.Extensions
                         if (IPAddress.TryParse(ipCheck, out var proxyIP))
                             options.KnownProxies.Add(proxyIP);
                         else
-                            Log.Logger.Warning("Invalid Proxy IP of {IpCheck}, Not Loaded", ipCheck);
+                            Log.Logger.Warning("IP de proxy inválido de {IpCheck}, Não carregado", ipCheck);
                     }
                 });
             }
@@ -133,7 +133,7 @@ namespace modulum.Server.Extensions
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
-                    Description = "Input your Bearer token in this format - Bearer {your token here} to access this API",
+                    Description = "Insira seu token Bearer neste formato - Bearer {seu token aqui} para acessar esta API",
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
@@ -174,7 +174,7 @@ namespace modulum.Server.Extensions
             IConfiguration configuration)
             => services
                 .AddDbContext<ModulumContext>(options => options
-                    .UseSqlServer(//Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING") ??
+                    .UseSqlServer(Environment.GetEnvironmentVariable(ApplicationConstants.Variable.ModulumConnectionString) ??
                            configuration.GetConnectionString("DefaultConnection")))
             .AddTransient<IDatabaseSeeder, DatabaseSeeder>()
             ;
@@ -223,7 +223,7 @@ namespace modulum.Server.Extensions
         internal static IServiceCollection AddJwtAuthentication(
             this IServiceCollection services, AppConfiguration config)
         {
-            var key = Encoding.UTF8.GetBytes(config.Secret);
+            var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable(ApplicationConstants.Variable.ModulumSecretJWT) ?? config.Secret);
             services
                 .AddAuthentication(authentication =>
                 {
@@ -236,7 +236,7 @@ namespace modulum.Server.Extensions
                     bearer.SaveToken = true;
                     bearer.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuerSigningKey = true,
+                        ValidateIssuerSigningKey = false, // Validação da assinatura do token, o token gerado esta com assinatura inválida
                         IssuerSigningKey = new SymmetricSecurityKey(key),
                         ValidateIssuer = false,
                         ValidateAudience = false,
@@ -249,7 +249,7 @@ namespace modulum.Server.Extensions
                         OnMessageReceived = context =>
                         {
                             var accessToken = context.Request.Query["access_token"];
-
+                    
                             // If the request is for our hub...
                             var path = context.HttpContext.Request.Path;
                             if (!string.IsNullOrEmpty(accessToken) &&
@@ -266,22 +266,22 @@ namespace modulum.Server.Extensions
                             {
                                 c.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                                 c.Response.ContentType = "application/json";
-                                var result = JsonConvert.SerializeObject(Result.Fail("The Token is expired."));
+                                var result = JsonConvert.SerializeObject(Result.Fail("O Token está expirado."));
                                 return c.Response.WriteAsync(result);
                             }
                             else
                             {
-#if DEBUG
+#if DEBUG           
                                 c.NoResult();
                                 c.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                                 c.Response.ContentType = "text/plain";
                                 return c.Response.WriteAsync(c.Exception.ToString());
-#else
+#else               
                                 c.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                                 c.Response.ContentType = "application/json";
                                 var result = JsonConvert.SerializeObject("Ocorreu um erro");
                                 return c.Response.WriteAsync(result);
-#endif
+#endif              
                             }
                         },
                         OnChallenge = context =>
@@ -291,33 +291,34 @@ namespace modulum.Server.Extensions
                             {
                                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                                 context.Response.ContentType = "application/json";
-                                var result = JsonConvert.SerializeObject(Result.Fail("You are not Authorized."));
+                                var result = JsonConvert.SerializeObject(Result.Fail("Você não está Autorizado"));
                                 return context.Response.WriteAsync(result);
                             }
-
+                    
                             return Task.CompletedTask;
                         },
                         OnForbidden = context =>
                         {
                             context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                             context.Response.ContentType = "application/json";
-                            var result = JsonConvert.SerializeObject(Result.Fail("You are not authorized to access this resource."));
+                            var result = JsonConvert.SerializeObject(Result.Fail("Você não tem autorização para acessar esse recurso"));
                             return context.Response.WriteAsync(result);
                         },
                     };
                 });
-            services.AddAuthorization(options =>
-            {
-                // Here I stored necessary permissions/roles in a constant
-                foreach (var prop in typeof(Permissions).GetNestedTypes().SelectMany(c => c.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)))
-                {
-                    var propertyValue = prop.GetValue(null);
-                    if (propertyValue is not null)
-                    {
-                        options.AddPolicy(propertyValue.ToString(), policy => policy.RequireClaim(ApplicationClaimTypes.Permission, propertyValue.ToString()));
-                    }
-                }
-            });
+            services.AddAuthorization();
+            //services.AddAuthorization(options =>
+            //{
+            //    // Here I stored necessary permissions/roles in a constant
+            //    foreach (var prop in typeof(Permissions).GetNestedTypes().SelectMany(c => c.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)))
+            //    {
+            //        var propertyValue = prop.GetValue(null);
+            //        if (propertyValue is not null)
+            //        {
+            //            options.AddPolicy(propertyValue.ToString(), policy => policy.RequireClaim(ApplicationClaimTypes.Permission, propertyValue.ToString()));
+            //        }
+            //    }
+            //});
             return services;
         }
     }

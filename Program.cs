@@ -17,6 +17,7 @@ using modulum.Application.Extensions;
 using Hangfire;
 using Microsoft.Extensions.FileProviders;
 using modulum.Server.Filters;
+using modulum.Shared.Constants.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,7 +54,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddSharedInfrastructure(_configuration);
 builder.Services.RegisterSwagger();
 builder.Services.AddInfrastructureMappings();
-builder.Services.AddHangfire(x => x.UseSqlServerStorage(//Environment.GetEnvironmentVariable("MODULUM_CONNECTION_STRING") ??
+builder.Services.AddHangfire(x => x.UseSqlServerStorage(Environment.GetEnvironmentVariable(ApplicationConstants.Variable.ModulumConnectionString) ??
                             _configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHangfireServer();
 builder.Services.AddControllers().AddValidators();

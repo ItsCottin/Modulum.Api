@@ -23,7 +23,7 @@ namespace modulum.Server.Controllers.Identity
         /// Get Users Details
         /// </summary>
         /// <returns>Status 200 OK</returns>
-        [Authorize(Policy = Permissions.Users.View)]
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
