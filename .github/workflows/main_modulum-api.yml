@@ -23,10 +23,13 @@ jobs:
         with:
           dotnet-version: '8.0'
 
-      - name: Set Connection String environment variable
+      - name: Set environment variable
         run: |
           echo "MODULUM_CONNECTION_STRING=${{ secrets.MODULUM_CONNECTION_STRING }}" >> $GITHUB_ENV
           echo "MODULUM_SECRET_JWT=${{ secrets.MODULUM_SECRET_JWT }}" >> $GITHUB_ENV
+          echo "URL_CLIENT=${{ secrets.URL_CLIENT }}" >> $GITHUB_ENV
+          echo "URL_API=${{ secrets.URL_API }}" >> $GITHUB_ENV
+          echo "SEND_GRID_MAIL_API_KEY=${{ secrets.SEND_GRID_MAIL_API_KEY }}" >> $GITHUB_ENV
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
