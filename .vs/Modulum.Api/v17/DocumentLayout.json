@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\.github\\workflows\\main_modulum-api.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:.github\\workflows\\main_modulum-api.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\controllers\\identity\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:controllers\\identity\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\controllers\\identity\\tokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:controllers\\identity\\tokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\controllers\\identity\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:controllers\\identity\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,8 +58,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Modulum.Api",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj",
+              "RelativeDocumentMoniker": "Modulum.Api.csproj",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj",
+              "RelativeToolTip": "Modulum.Api.csproj",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACYAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-30T22:41:27.246Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
@@ -90,72 +91,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TokenController.cs",
-              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\TokenController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Identity\\TokenController.cs",
-              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\TokenController.cs",
-              "RelativeToolTip": "Controllers\\Identity\\TokenController.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAArwBIAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T03:02:03.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Identity\\UserController.cs",
-              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\UserController.cs",
-              "RelativeToolTip": "Controllers\\Identity\\UserController.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAlwGMAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T02:46:26.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Identity\\AccountController.cs",
-              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\Identity\\AccountController.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAlwEEAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T05:40:05.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-18T03:18:17.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "main_modulum-api.yml",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\.github\\workflows\\main_modulum-api.yml",
               "RelativeDocumentMoniker": ".github\\workflows\\main_modulum-api.yml",
               "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\.github\\workflows\\main_modulum-api.yml",
               "RelativeToolTip": ".github\\workflows\\main_modulum-api.yml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-03-21T15:25:58.78Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\ServiceCollectionExtensions.cs",
@@ -168,20 +117,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Identity\\UserController.cs",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\UserController.cs",
+              "RelativeToolTip": "Controllers\\Identity\\UserController.cs",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAlwGMAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T02:46:26.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAIBZwDMAAAAnAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAACBjwDMAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T14:36:26.46Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "RoleController.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Identity\\RoleController.cs",
               "RelativeDocumentMoniker": "Controllers\\Identity\\RoleController.cs",
@@ -194,20 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Modulum.Api.csproj",
-              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj",
-              "RelativeDocumentMoniker": "Modulum.Api.csproj",
-              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj*",
-              "RelativeToolTip": "Modulum.Api.csproj*",
-              "ViewState": "AQIAAAAAAAAAAAAAAIBJwCkAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-20T03:17:45.762Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
               "Title": "MvcBuilderExtensions.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\MvcBuilderExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\MvcBuilderExtensions.cs",
@@ -220,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "HostBuilderExtensions.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\HostBuilderExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\HostBuilderExtensions.cs",
@@ -233,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "CoreEntityController.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\CoreEntity\\CoreEntityController.cs",
               "RelativeDocumentMoniker": "Controllers\\CoreEntity\\CoreEntityController.cs",
@@ -246,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -259,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 10,
               "Title": "ApplicationBuilderExtensions.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\ApplicationBuilderExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\ApplicationBuilderExtensions.cs",
@@ -272,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "ServerPreference.cs",
               "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Settings\\ServerPreference.cs",
               "RelativeDocumentMoniker": "Settings\\ServerPreference.cs",
