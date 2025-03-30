@@ -8,6 +8,10 @@
 /.vs/Modulum.Api/FileContentIndex/dba794b5-c8a3-432c-a877-d121a72f5f5a.vsidx
 /.vs/Modulum.Api/FileContentIndex/0502a0fd-c415-436b-b689-6538a3af3cce.vsidx
 /.vs/Modulum.Api/FileContentIndex
+/.vs
+*/**/bin/Debug
+/Modulum.Api/bin/Debug
+bin/
 /Error2025-03-18.log
 # Build results
 [Dd]ebug/

@@ -4,6 +4,8 @@ using modulum.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using modulum.Infrastructure.Models.Identity;
 
 namespace modulum.Server.Controllers.Identity
 {
@@ -13,10 +15,12 @@ namespace modulum.Server.Controllers.Identity
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly UserManager<ModulumUser> _userManager;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, UserManager<ModulumUser> userManager)
         {
             _userService = userService;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -88,12 +92,12 @@ namespace modulum.Server.Controllers.Identity
         /// <param name="userId"></param>
         /// <param name="code"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpGet("confirm-email")]
-        [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)
-        {
-            return Ok(await _userService.ConfirmEmailAsync(userId, code));
-        }
+        //[HttpGet("confirm-email")]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)
+        //{
+        //    return Ok(await _userService.ConfirmEmailAsync(userId, code));
+        //}
 
         /// <summary>
         /// Toggle User Status (Activate and Deactivate)
@@ -129,6 +133,19 @@ namespace modulum.Server.Controllers.Identity
         public async Task<IActionResult> ResetPasswordAsync(ResetPasswordRequest request)
         {
             return Ok(await _userService.ResetPasswordAsync(request));
+        }
+
+        /// <summary>
+        /// Refresh Token
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [Authorize]
+        [HttpPost("info")]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            return Ok();
         }
     }
 }

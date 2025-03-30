@@ -217,6 +217,7 @@ namespace modulum.Server.Extensions
             services.AddTransient<ITokenService, IdentityService>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IEmailService, EmailService>();
             return services;
         }
 

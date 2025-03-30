@@ -3,6 +3,9 @@ using modulum.Application.Interfaces.Services.Identity;
 using modulum.Application.Requests.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using modulum.Infrastructure.Models.Identity;
 
 namespace modulum.Server.Controllers.Identity
 {
@@ -11,10 +14,12 @@ namespace modulum.Server.Controllers.Identity
     public class TokenController : ControllerBase
     {
         private readonly ITokenService _identityService;
+        private readonly SignInManager<ModulumUser> _signInManager;
 
-        public TokenController(ITokenService identityService, ICurrentUserService currentUserService)
+        public TokenController(ITokenService identityService, ICurrentUserService currentUserService, SignInManager<ModulumUser> signInManager)
         {
             _identityService = identityService;
+            _signInManager = signInManager;
         }
 
         /// <summary>
@@ -40,5 +45,23 @@ namespace modulum.Server.Controllers.Identity
             var response = await _identityService.GetRefreshTokenAsync(model);
             return Ok(response);
         }
+
+        /// <summary>
+        /// Refresh Token
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<ActionResult> Logout([FromBody] object empty)
+        {
+            if (empty is not null)
+            {
+                await _signInManager.SignOutAsync();
+            }
+            return Ok();
+        }
+
+
     }
 }
