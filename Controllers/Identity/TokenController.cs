@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using modulum.Infrastructure.Models.Identity;
+using modulum.Shared.Routes;
 
 namespace modulum.Server.Controllers.Identity
 {
-    [Route("api/identity/token")]
+    [Route(EndpointsToken.Raiz)]
     [ApiController]
     public class TokenController : ControllerBase
     {
@@ -27,7 +28,7 @@ namespace modulum.Server.Controllers.Identity
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpPost]
+        [HttpPost(EndpointsToken.Login)]
         public async Task<ActionResult> Get(TokenRequest model)
         {
             var response = await _identityService.LoginAsync(model);
@@ -39,7 +40,7 @@ namespace modulum.Server.Controllers.Identity
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpPost("refresh")]
+        [HttpPost(EndpointsToken.Refresh)]
         public async Task<ActionResult> Refresh([FromBody] RefreshTokenRequest model)
         {
             var response = await _identityService.GetRefreshTokenAsync(model);
@@ -52,7 +53,7 @@ namespace modulum.Server.Controllers.Identity
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
         [Authorize]
-        [HttpPost("logout")]
+        [HttpPost(EndpointsToken.Logout)]
         public async Task<ActionResult> Logout([FromBody] object empty)
         {
             if (empty is not null)

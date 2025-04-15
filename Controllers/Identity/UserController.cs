@@ -6,21 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using modulum.Infrastructure.Models.Identity;
+using nodulum.Application.Requests.Identity;
+using modulum.Shared.Routes;
+using modulum.Application.Requests.Account;
+using modulum.Application.Interfaces.Services;
 
 namespace modulum.Server.Controllers.Identity
 {
     [Authorize]
-    [Route("api/identity/user")]
+    [Route(EndpointsUser.Raiz)]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly UserManager<ModulumUser> _userManager;
+        private readonly ICurrentUserService _currentUser;
 
-        public UserController(IUserService userService, UserManager<ModulumUser> userManager)
+        public UserController(IUserService userService, UserManager<ModulumUser> userManager, ICurrentUserService currentUser)
         {
             _userService = userService;
             _userManager = userManager;
+            _currentUser = currentUser;
         }
 
         /// <summary>
@@ -42,7 +48,7 @@ namespace modulum.Server.Controllers.Identity
         /// <returns>Status 200 OK</returns>
         //[Authorize(Policy = Permissions.Users.View)]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById(int id)
         {
             var user = await _userService.GetAsync(id);
             return Ok(user);
@@ -79,11 +85,38 @@ namespace modulum.Server.Controllers.Identity
         /// <param name="request"></param>
         /// <returns>Status 200 OK</returns>
         [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> RegisterAsync(RegisterRequest request)
+        [HttpPost(EndpointsUser.PreCadastro)]
+        public async Task<IActionResult> PreRegisterAsync(PreRegisterRequest request)
         {
             var origin = Request.Headers["origin"];
-            return Ok(await _userService.RegisterAsync(request, origin));
+            return Ok(await _userService.PreRegisterAsync(request, origin));
+        }
+
+        /// <summary>
+        /// Reset Password
+        /// </summary>
+        /// <param name="userId"></param>
+        /// /// <param name="token"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsUser.ConfirmEmail)]
+        [AllowAnonymous]
+        public async Task<ActionResult> ConfirmEmailAsync(TwoFactorRequest twoFactorRequest)
+        {
+            var response = await _userService.ConfirmEmailAsync(twoFactorRequest);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Register a User
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>Status 200 OK</returns>
+        [AllowAnonymous]
+        [HttpPost(EndpointsUser.FimCadastro)]
+        public async Task<IActionResult> FimRegisterAsync(FinishRegisterRequest request)
+        {
+            var origin = Request.Headers["origin"];
+            return Ok(await _userService.FimRegisterAsync(request, origin));
         }
 
         /// <summary>
@@ -115,7 +148,7 @@ namespace modulum.Server.Controllers.Identity
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpPost("forgot-password")]
+        [HttpPost(EndpointsUser.EsqueciSenha)]
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPasswordAsync(ForgotPasswordRequest request)
         {
@@ -128,7 +161,7 @@ namespace modulum.Server.Controllers.Identity
         /// </summary>
         /// <param name="request"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpPost("reset-password")]
+        [HttpPost(EndpointsUser.ResetarSenha)]
         [AllowAnonymous]
         public async Task<IActionResult> ResetPasswordAsync(ResetPasswordRequest request)
         {
@@ -141,11 +174,38 @@ namespace modulum.Server.Controllers.Identity
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
         [Authorize]
-        [HttpPost("info")]
+        [HttpPost(EndpointsUser.Info)]
         public async Task<IActionResult> GetUserInfo()
         {
             var user = await _userManager.GetUserAsync(User);
             return Ok();
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPut(EndpointsUser.ChangePassword)]
+        public async Task<ActionResult> ChangePassword(ChangePasswordRequest model)
+        {
+            var response = await _userService.ChangePasswordAsync(model, _currentUser.UserId);
+            return Ok(response);
+        }
+
+
+
+        /// <summary>
+        /// Reset Password
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet(EndpointsUser.IsEmailConfirmed)]
+        [AllowAnonymous]
+        public async Task<ActionResult> IsConfirmedAccountAsync(string email)
+        {
+            var response = await _userService.IsEmailConfirmed(email);
+            return Ok(response);
         }
     }
 }

@@ -44,6 +44,12 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using modulum.Application.Interfaces.Services.Account;
+using modulum.Application.Interfaces.Repositories;
+using modulum.Infrastructure.Repositories;
+using modulum.Infrastructure.Repositories;
+using modulum.Application.Interfaces.Services.DynamicEntity;
+using modulum.Infrastructure.Services.DynamicEntity;
 
 namespace modulum.Server.Extensions
 {
@@ -189,9 +195,9 @@ namespace modulum.Server.Extensions
         internal static IServiceCollection AddIdentity(this IServiceCollection services)
         {
             services
-                .AddIdentity<ModulumUser, IdentityRole>(options =>
+                .AddIdentity<ModulumUser, ModulumRole>(options =>
                 {
-                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredLength = 0;
                     options.Password.RequireDigit = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
@@ -215,9 +221,10 @@ namespace modulum.Server.Extensions
         internal static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddTransient<ITokenService, IdentityService>();
-            services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IDynamicEntityService, DynamicEntityService>();
+            services.AddTransient<IDynamicTableService, DynamicTableService>();
             return services;
         }
 

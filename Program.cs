@@ -50,7 +50,7 @@ builder.Services.AddJwtAuthentication(builder.Services.GetApplicationSettings(_c
 builder.Services.AddSignalR();
 //builder.Services.AddApplicationLayer();
 builder.Services.AddApplicationServices();
-//builder.Services.AddRepositories();
+builder.Services.AddRepositories();
 builder.Services.AddSharedInfrastructure(_configuration);
 builder.Services.RegisterSwagger();
 builder.Services.AddInfrastructureMappings();
