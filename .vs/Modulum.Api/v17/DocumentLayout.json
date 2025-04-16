@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\controllers\\versao\\versaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:controllers\\versao\\versaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +35,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AQIAAMoAAAAAAAAAAAAAwOUAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T03:00:39.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VersaoController.cs",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Versao\\VersaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Versao\\VersaoController.cs",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Versao\\VersaoController.cs",
+              "RelativeToolTip": "Controllers\\Versao\\VersaoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:54:45.076Z",
+              "EditorCaption": ""
             }
           ]
         }

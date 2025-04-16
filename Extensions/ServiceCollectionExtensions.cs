@@ -50,6 +50,8 @@ using modulum.Infrastructure.Repositories;
 using modulum.Infrastructure.Repositories;
 using modulum.Application.Interfaces.Services.DynamicEntity;
 using modulum.Infrastructure.Services.DynamicEntity;
+using RCF.Modulum.Application.Interfaces.Services;
+using RCF.Modulum.Infrastructure.Services.Versao;
 
 namespace modulum.Server.Extensions
 {
@@ -225,6 +227,7 @@ namespace modulum.Server.Extensions
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IDynamicEntityService, DynamicEntityService>();
             services.AddTransient<IDynamicTableService, DynamicTableService>();
+            services.AddTransient<IVersao, VersaoService>();
             return services;
         }
 

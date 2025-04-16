@@ -72,6 +72,11 @@ SELECT * FROM tbl_table
 SELECT * FROM tbl_field
 SELECT * FROM Aluno
 
+INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
+SP_HELP Aluno
+
+INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
+
 SELECT * FROM __EFMigrationsHistory
 
 SELECT * FROM [dbo].[tbl_role];
