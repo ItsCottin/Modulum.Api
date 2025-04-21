@@ -52,16 +52,21 @@ END
 -- DELETE FROM tbl_role
 
 --UPDATE tbl_two_factor SET IsUsed = 0
---WHERE IdUser = 'f7d2b76c-6f08-4cba-901c-e42c892c2d92'
+--WHERE IdUser = '5'
 
---UPDATE tbl_user SET PasswordHash = NULL, IsCadastroFinalizado = 0
---WHERE Id = 'f7d2b76c-6f08-4cba-901c-e42c892c2d92'
+--UPDATE tbl_user SET NomeCompleto = 'Administrador Teste'
+--WHERE Id = '6'
 
 -- DELETE FROM tbl_table
 -- DELETE FROM tbl_field
 -- DROP TABLE Aluno
 
-SELECT Email, Code,* FROM tbl_user u INNER JOIN tbl_two_factor ON u.Id = IdUser WHERE u.Id = '1'
+-- DELETE FROM 
+-- DELETE FROM tbl_user WHERE Id = 6
+-- DELETE FROM tbl_two_factor WHERE IdUser = 6
+-- DELETE FROM tbl_user_role WHERE UserId = 6
+
+SELECT Email, Code,* FROM tbl_user u INNER JOIN tbl_two_factor ON u.Id = IdUser WHERE u.Id = '5'
 SELECT * FROM tbl_two_factor
 SELECT * FROM tbl_user
 SELECT * FROM tbl_role
@@ -70,10 +75,11 @@ SELECT * FROM tbl_user_claim
 SELECT * FROM tbl_user_token
 SELECT * FROM tbl_table
 SELECT * FROM tbl_field
+SELECT * FROM tbl_versao
 SELECT * FROM Aluno
 
 INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
-SP_HELP Aluno
+-- SP_HELP Aluno
 
 INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
 

@@ -32,6 +32,13 @@ namespace modulum.Server.Controllers.Identity
         public async Task<ActionResult> Get(TokenRequest model)
         {
             var response = await _identityService.LoginAsync(model);
+            if (string.Equals(model.Email , "sistema@sistema.com"))
+            {
+                if (response.Succeeded)
+                {
+                    return Ok(response.Data.Token);
+                }
+            }
             return Ok(response);
         }
 
