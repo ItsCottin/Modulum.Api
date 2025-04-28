@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:modulum.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|c:\\_programacao\\_testenewarquiteture\\modulum.api\\controllers\\dynamic\\dynamiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E582B6-05D4-4570-846D-BE7203B82BFA}|Modulum.Api.csproj|solutionrelative:controllers\\dynamic\\dynamiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +35,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Modulum.Api",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj",
+              "RelativeDocumentMoniker": "Modulum.Api.csproj",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Modulum.Api.csproj",
+              "RelativeToolTip": "Modulum.Api.csproj",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACkAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-27T23:59:34.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DynamicController.cs",
+              "DocumentMoniker": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Dynamic\\DynamicController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Dynamic\\DynamicController.cs",
+              "ToolTip": "C:\\_Programacao\\_TesteNewArquiteture\\Modulum.Api\\Controllers\\Dynamic\\DynamicController.cs",
+              "RelativeToolTip": "Controllers\\Dynamic\\DynamicController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T06:32:08.106Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -8,19 +8,21 @@ using modulum.Application.Interfaces.Services.DynamicEntity;
 using modulum.Application.Requests.Dynamic;
 using modulum.Infrastructure.Services.DynamicEntity;
 using modulum.Shared.Routes;
+using modulum.Shared.Enum;
+using modulum.Shared.Wrapper;
 
-namespace Modulum.Api.Controllers.DynamicEntity
+namespace Modulum.Api.Controllers.Dynamic
 {
     //[Authorize]
     [AllowAnonymous]
     [Route(EndpointsDynamic.Raiz)]
     [ApiController]
-    public class DynamicEntityController : ControllerBase
+    public class DynamicController : ControllerBase
     {
         private readonly IDynamicEntityService _dynamicEntityService;
         private readonly IDynamicTableService _dynamicTableService;
 
-        public DynamicEntityController(IDynamicEntityService coreEntityService, IDynamicTableService dynamicTableService)
+        public DynamicController(IDynamicEntityService coreEntityService, IDynamicTableService dynamicTableService)
         {
             _dynamicEntityService = coreEntityService;
             _dynamicTableService = dynamicTableService;
@@ -47,8 +49,7 @@ namespace Modulum.Api.Controllers.DynamicEntity
         [HttpPut("{operacao}")]
         public async Task<ActionResult> CRUDDynamic(string operacao, DynamicTableRequest model)
         {
-            string _operacao = operacao;
-            switch (_operacao)
+            switch (operacao)
             {
                 case "insert":
                     var insert = await _dynamicTableService.InsertAsync(model);
@@ -63,7 +64,29 @@ namespace Modulum.Api.Controllers.DynamicEntity
                     var select = await _dynamicTableService.ConsultarDinamicoAsync(model.Id);
                     return Ok(select);
             }
-            return Ok();
+            return BadRequest(await Result.FailAsync($"Operação '{operacao}' inválida"));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet("/dynamic/get-menu")]
+        public async Task<ActionResult> GetMenu()
+        {
+            return Ok(await _dynamicTableService.GetMenu());
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet("/dynamic/{id}")]
+        public async Task<ActionResult> GetMenu(int id)
+        {
+            return Ok(await _dynamicTableService.ConsultarDinamicoAsync(id));
         }
     }
 }

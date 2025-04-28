@@ -59,9 +59,10 @@ END
 
 -- DELETE FROM tbl_table
 -- DELETE FROM tbl_field
+-- DROP TABLE Teste
 -- DROP TABLE Aluno
 
--- DELETE FROM 
+-- TRUNCATE TABLE tbl_versao
 -- DELETE FROM tbl_user WHERE Id = 6
 -- DELETE FROM tbl_two_factor WHERE IdUser = 6
 -- DELETE FROM tbl_user_role WHERE UserId = 6
@@ -76,7 +77,7 @@ SELECT * FROM tbl_user_token
 SELECT * FROM tbl_table
 SELECT * FROM tbl_field
 SELECT * FROM tbl_versao
-SELECT * FROM Aluno
+SELECT * FROM Teste
 
 INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
 -- SP_HELP Aluno
