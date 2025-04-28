@@ -13,8 +13,8 @@ using modulum.Shared.Wrapper;
 
 namespace Modulum.Api.Controllers.Dynamic
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
+    //[AllowAnonymous]
     [Route(EndpointsDynamic.Raiz)]
     [ApiController]
     public class DynamicController : ControllerBase
@@ -72,7 +72,7 @@ namespace Modulum.Api.Controllers.Dynamic
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpGet("/dynamic/get-menu")]
+        [HttpGet(EndpointsDynamic.Menu)]
         public async Task<ActionResult> GetMenu()
         {
             return Ok(await _dynamicTableService.GetMenu());
@@ -83,10 +83,32 @@ namespace Modulum.Api.Controllers.Dynamic
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
-        [HttpGet("/dynamic/{id}")]
-        public async Task<ActionResult> GetMenu(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult> ConsultarDinamicoAsync(int id)
         {
             return Ok(await _dynamicTableService.ConsultarDinamicoAsync(id));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet(EndpointsDynamic.GetNewObjeto + "/{id}")]
+        public async Task<ActionResult> GetNewObjetoDinamico(int id)
+        {
+            return Ok(await _dynamicTableService.GetNewObjetoDinamico(id));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet(EndpointsDynamic.GetMapTable + "/{id}")]
+        public async Task<ActionResult> ConsultarMapTabelaAsync(int id)
+        {
+            return Ok(await _dynamicEntityService.ConsultarMapTabelaAsync(id));
         }
     }
 }
