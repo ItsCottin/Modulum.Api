@@ -2092,7 +2092,7 @@
           "lib/net8.0/RCF.Modulum.Domain.dll": {}
         }
       },
-      "RCF.Modulum.Infrastructure/0.0.3-beta.4": {
+      "RCF.Modulum.Infrastructure/0.0.3-beta.5": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "14.0.0",
@@ -6113,10 +6113,10 @@
         "rcf.modulum.domain.nuspec"
       ]
     },
-    "RCF.Modulum.Infrastructure/0.0.3-beta.4": {
-      "sha512": "li48oqCveP3l2sjzgs1IIH9JUII0aRZ0z4aPFjubnqdiHEynOZS4VrKr7X6u/od0HVoQ0m6nQX+8385W8/0hMQ==",
+    "RCF.Modulum.Infrastructure/0.0.3-beta.5": {
+      "sha512": "CiULC9a58UwKfedXZuiGd/pweK733nlHzOb3mtIUOQ5dRz8/asqJ9F351JXP1CMd+3f3ouJF2QMRewH0QrUoyg==",
       "type": "package",
-      "path": "rcf.modulum.infrastructure/0.0.3-beta.4",
+      "path": "rcf.modulum.infrastructure/0.0.3-beta.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6124,7 +6124,7 @@
         "README.md",
         "lib/net8.0/RCF.Modulum.Infrastructure.dll",
         "lib/net8.0/RCF.Modulum.Infrastructure.runtimeconfig.json",
-        "rcf.modulum.infrastructure.0.0.3-beta.4.nupkg.sha512",
+        "rcf.modulum.infrastructure.0.0.3-beta.5.nupkg.sha512",
         "rcf.modulum.infrastructure.nuspec"
       ]
     },
@@ -7691,7 +7691,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.14",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.21.0",
       "RCF.Modulum.Application >= 0.0.3-beta.3",
-      "RCF.Modulum.Infrastructure >= 0.0.3-beta.4",
+      "RCF.Modulum.Infrastructure >= 0.0.3-beta.5",
       "RCF.Modulum.Infrastructure.Shared >= 0.0.2-beta.1",
       "RCF.Modulum.Shared >= 0.0.3-beta.3",
       "Serilog.Enrichers.Environment >= 3.0.1",
@@ -7806,7 +7806,7 @@
           },
           "RCF.Modulum.Infrastructure": {
             "target": "Package",
-            "version": "[0.0.3-beta.4, )"
+            "version": "[0.0.3-beta.5, )"
           },
           "RCF.Modulum.Infrastructure.Shared": {
             "target": "Package",
