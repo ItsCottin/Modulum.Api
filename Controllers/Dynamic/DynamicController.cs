@@ -13,8 +13,8 @@ using modulum.Shared.Wrapper;
 
 namespace Modulum.Api.Controllers.Dynamic
 {
-    [Authorize]
-    //[AllowAnonymous]
+    //[Authorize]
+    [AllowAnonymous]
     [Route(EndpointsDynamic.Raiz)]
     [ApiController]
     public class DynamicController : ControllerBase
