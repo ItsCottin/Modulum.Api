@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Modulum.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class resetdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,24 +28,6 @@ namespace Modulum.Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_role", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "tbl_table",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeTabela = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NomeTela = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CampoPK = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JsonObject = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelaObject = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tbl_table", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,6 +57,24 @@ namespace Modulum.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tbl_versao",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Pacote = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RequestedVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResolvedVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Framework = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PacoteRaiz = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_versao", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tbl_role_claim",
                 schema: "dbo",
                 columns: table => new
@@ -98,28 +98,25 @@ namespace Modulum.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tbl_field",
+                name: "tbl_table",
                 schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeCampoBase = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NomeCampoTela = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tamanho = table.Column<int>(type: "int", nullable: true),
-                    IsPrimaryKey = table.Column<bool>(type: "bit", nullable: false),
-                    IsObrigatorio = table.Column<bool>(type: "bit", nullable: false),
-                    TableId = table.Column<int>(type: "int", nullable: false)
+                    NomeTabela = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeTela = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CampoPK = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tbl_field", x => x.Id);
+                    table.PrimaryKey("PK_tbl_table", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_tbl_field_tbl_table_TableId",
-                        column: x => x.TableId,
+                        name: "FK_tbl_table_tbl_user_IdUsuario",
+                        column: x => x.IdUsuario,
                         principalSchema: "dbo",
-                        principalTable: "tbl_table",
+                        principalTable: "tbl_user",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -241,11 +238,85 @@ namespace Modulum.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "tbl_field",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NomeCampoBase = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeCampoTela = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tamanho = table.Column<int>(type: "int", nullable: true),
+                    IsPrimaryKey = table.Column<bool>(type: "bit", nullable: false),
+                    IsForeigeKey = table.Column<bool>(type: "bit", nullable: false),
+                    IsObrigatorio = table.Column<bool>(type: "bit", nullable: false),
+                    TableId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_field", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tbl_field_tbl_table_TableId",
+                        column: x => x.TableId,
+                        principalSchema: "dbo",
+                        principalTable: "tbl_table",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tbl_relationship",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TabelaOrigemId = table.Column<int>(type: "int", nullable: false),
+                    TabelaDestinoId = table.Column<int>(type: "int", nullable: false),
+                    CampoOrigem = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CampoDestino = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NomeConstraint = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CampoParaExibicaoRelacionamento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_relationship", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tbl_relationship_tbl_table_TabelaDestinoId",
+                        column: x => x.TabelaDestinoId,
+                        principalSchema: "dbo",
+                        principalTable: "tbl_table",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_tbl_relationship_tbl_table_TabelaOrigemId",
+                        column: x => x.TabelaOrigemId,
+                        principalSchema: "dbo",
+                        principalTable: "tbl_table",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_field_TableId",
                 schema: "dbo",
                 table: "tbl_field",
                 column: "TableId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_relationship_TabelaDestinoId",
+                schema: "dbo",
+                table: "tbl_relationship",
+                column: "TabelaDestinoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_relationship_TabelaOrigemId",
+                schema: "dbo",
+                table: "tbl_relationship",
+                column: "TabelaOrigemId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -260,6 +331,12 @@ namespace Modulum.Api.Migrations
                 schema: "dbo",
                 table: "tbl_role_claim",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_table_IdUsuario",
+                schema: "dbo",
+                table: "tbl_table",
+                column: "IdUsuario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_two_factor_IdUser",
@@ -308,6 +385,10 @@ namespace Modulum.Api.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
+                name: "tbl_relationship",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
                 name: "tbl_role_claim",
                 schema: "dbo");
 
@@ -329,6 +410,10 @@ namespace Modulum.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "tbl_user_token",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "tbl_versao",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

@@ -10,11 +10,13 @@ using modulum.Infrastructure.Services.DynamicEntity;
 using modulum.Shared.Routes;
 using modulum.Shared.Enum;
 using modulum.Shared.Wrapper;
+using modulum.Application.Requests.Dynamic.Update;
+using modulum.Application.Requests.Dynamic.Relationship;
 
 namespace Modulum.Api.Controllers.Dynamic
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
+    //[AllowAnonymous]
     [Route(EndpointsDynamic.Raiz)]
     [ApiController]
     public class DynamicController : ControllerBase
@@ -37,7 +39,6 @@ namespace Modulum.Api.Controllers.Dynamic
         public async Task<ActionResult> CreateDynamic(CreateDynamicTableRequest model)
         {
             var resultado = await _dynamicEntityService.CriarMapTabelaAsync(model);
-            var resultado2 = await _dynamicTableService.CriarTabelaFisicaAsync(resultado.Data);
             return Ok(resultado);
         }
 
@@ -58,10 +59,9 @@ namespace Modulum.Api.Controllers.Dynamic
                     var update = await _dynamicTableService.UpdateAsync(model);
                     return Ok(update);
                 case "delete":
-                    var delete = await _dynamicTableService.DeleteAsync(model);
-                    return Ok(delete);
+                    return BadRequest(await Result.FailAsync($"Operação '{operacao}' removida, utilize o entpoint '/dynamic/del-for-id'"));
                 case "select":
-                    var select = await _dynamicTableService.ConsultarDinamicoAsync(model.Id);
+                    var select = await _dynamicTableService.ConsultaTodosPorIdTabelaAsync(model.Id);
                     return Ok(select);
             }
             return BadRequest(await Result.FailAsync($"Operação '{operacao}' inválida"));
@@ -81,18 +81,18 @@ namespace Modulum.Api.Controllers.Dynamic
         /// <summary>
         /// Change Password
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id"></param>
         /// <returns>Status 200 OK</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult> ConsultarDinamicoAsync(int id)
+        public async Task<ActionResult> ConsultaTodosPorIdTabelaAsync(int id)
         {
-            return Ok(await _dynamicTableService.ConsultarDinamicoAsync(id));
+            return Ok(await _dynamicTableService.ConsultaTodosPorIdTabelaAsync(id));
         }
 
         /// <summary>
         /// Change Password
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id"></param>
         /// <returns>Status 200 OK</returns>
         [HttpGet(EndpointsDynamic.GetNewObjeto + "/{id}")]
         public async Task<ActionResult> GetNewObjetoDinamico(int id)
@@ -105,10 +105,87 @@ namespace Modulum.Api.Controllers.Dynamic
         /// </summary>
         /// <param name="model"></param>
         /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsDynamic.SelectDynamicById)]
+        public async Task<ActionResult> SelectDynamicById(DynamicForIdRequest model)
+        {
+            return Ok(await _dynamicTableService.ConsultaRegistroPorIdTabelaEIdRegistroAsync(model));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsDynamic.DeleteDynamicById)]
+        public async Task<ActionResult> DeleteDynamicById(DynamicForIdRequest model)
+        {
+            return Ok(await _dynamicTableService.DeletePorIdAsync(model));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsDynamic.AlterMapTable)]
+        public async Task<ActionResult> AlterMapTableAsync(CreateDynamicTableRequest model)
+        {
+            return Ok(await _dynamicEntityService.AlterMapTableAsync(model));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Status 200 OK</returns>
         [HttpGet(EndpointsDynamic.GetMapTable + "/{id}")]
         public async Task<ActionResult> ConsultarMapTabelaAsync(int id)
         {
             return Ok(await _dynamicEntityService.ConsultarMapTabelaAsync(id));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsDynamic.RenameNomeTabelaTela)]
+        public async Task<ActionResult> RenameNomeTabelaTelaAsync(RenameNomeTabelaTelaRequest model)
+        {
+            return Ok(await _dynamicEntityService.RenameNomeTabelaTelaAsync(model));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpDelete(EndpointsDynamic.DeleteMapTable + "/{IdTable}")]
+        public async Task<ActionResult> DeleteMapTableAsync(int IdTable)
+        {
+            return Ok(await _dynamicEntityService.DeleteMapTableAsync(IdTable));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpPost(EndpointsDynamic.AlterRelacionamento)]
+        public async Task<ActionResult> AlterRelacionamento(List<CreateDynamicRelationshipRequest> model)
+        {
+            return Ok(await _dynamicEntityService.AlterRelacionamento(model));
+        }
+
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Status 200 OK</returns>
+        [HttpGet(EndpointsDynamic.ConsultarRelacionamento + "/{id}")]
+        public async Task<ActionResult> ConsultarRelacionamento(int id)
+        {
+            return Ok(await _dynamicEntityService.ConsultarRelacionamento(id));
         }
     }
 }

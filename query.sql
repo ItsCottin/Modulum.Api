@@ -59,8 +59,11 @@ END
 
 -- DELETE FROM tbl_table
 -- DELETE FROM tbl_field
--- DROP TABLE Aluno
+-- DROP TABLE _1121_3
 -- DROP TABLE Funcionario
+-- DROP TABLE Professor
+-- DELETE FROM tbl_role
+-- DELETE FROM tbl_user
 
 -- TRUNCATE TABLE tbl_versao
 -- DELETE FROM tbl_user WHERE Id = 6
@@ -75,12 +78,38 @@ SELECT * FROM tbl_user_role
 SELECT * FROM tbl_user_claim
 SELECT * FROM tbl_user_token
 SELECT * FROM tbl_table
-SELECT * FROM tbl_field
+SELECT * FROM Tela_para_deletar_3
+SELECT * FROM tbl_field WHERE TableId = 23
+SELECT * FROM tbl_relationship
 SELECT * FROM tbl_versao
-SELECT * FROM Aluno
+SELECT * FROM Cadastro_de_Aluno_3
 SELECT * FROM Funcionario
 
-INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
+SELECT COLUMNPROPERTY(OBJECT_ID('Cadastro_de_Aluno_3'), 'Id', 'IsIdentity') AS IsIdentity
+SELECT COLUMNPROPERTY(OBJECT_ID('CadastroParaChurrasco_1'), 'Id', 'IsIdentity') AS IsIdentity
+
+CREATE TABLE _1121_3 (Id INT PRIMARY KEY IDENTITY(1,1), _111 VARCHAR(2));
+
+
+--CREATE TABLE Aluno_1_Nova (
+--    Id INT IDENTITY(1,1) PRIMARY KEY,
+--    Nome_do_Aluno VARCHAR(255),
+--	CPF INT,
+--	Data_de_Nascimento DATE,
+--	Matriculado BIT
+--);
+--
+---- Copia os dados da tabela antiga para a nova
+--INSERT INTO Aluno_1_Nova (Nome_do_Aluno, CPF, Data_de_Nascimento, Matriculado)
+--SELECT Nome_do_Aluno, CPF, Data_de_Nascimento, Matriculado FROM Aluno_1;
+
+-- (Opcional) Exclui a tabela antiga
+--DROP TABLE Aluno_1;
+
+-- Renomeia a nova tabela para o nome original
+--EXEC sp_rename 'Aluno_1_Nova', 'Aluno_1';
+
+--INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');
 -- SP_HELP Aluno
 
 INSERT INTO Aluno (RA,Nome_do_Aluno,CPF_do_Aluno,Data_de_Nascimento_do_Aluno) VALUES ('00348046','Rodrigo Cotting Fontes',46549857864,'30/04/1995');

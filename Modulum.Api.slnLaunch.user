@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "Modulum.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Modulum.Client\\Modulum.Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -98,19 +98,19 @@
             },
             "RCF.Modulum.Application": {
               "target": "Package",
-              "version": "[0.0.3-beta.3, )"
+              "version": "[0.0.3-beta.5, )"
             },
             "RCF.Modulum.Infrastructure": {
               "target": "Package",
-              "version": "[0.0.3-beta.8, )"
+              "version": "[0.0.3-beta.9, )"
             },
             "RCF.Modulum.Infrastructure.Shared": {
               "target": "Package",
-              "version": "[0.0.2-beta.1, )"
+              "version": "[0.0.2-beta.2, )"
             },
             "RCF.Modulum.Shared": {
               "target": "Package",
-              "version": "[0.0.3-beta.3, )"
+              "version": "[0.0.3-beta.4, )"
             },
             "Serilog.Enrichers.Environment": {
               "target": "Package",
@@ -164,7 +164,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -12,8 +12,8 @@ using modulum.Infrastructure.Contexts;
 namespace Modulum.Api.Migrations
 {
     [DbContext(typeof(ModulumContext))]
-    [Migration("20250420090445_Versao1")]
-    partial class Versao1
+    [Migration("20250508200107_resetdb")]
+    partial class resetdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,9 @@ namespace Modulum.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsForeigeKey")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsObrigatorio")
                         .HasColumnType("bit");
 
@@ -100,6 +103,48 @@ namespace Modulum.Api.Migrations
                     b.ToTable("tbl_field", "dbo");
                 });
 
+            modelBuilder.Entity("modulum.Domain.Entities.DynamicEntity.Relationship", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CampoDestino")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CampoOrigem")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CampoParaExibicaoRelacionamento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeConstraint")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TabelaDestinoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TabelaOrigemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TabelaDestinoId");
+
+                    b.HasIndex("TabelaOrigemId");
+
+                    b.ToTable("tbl_relationship", "dbo");
+                });
+
             modelBuilder.Entity("modulum.Domain.Entities.DynamicEntity.Table", b =>
                 {
                     b.Property<int>("Id")
@@ -111,8 +156,8 @@ namespace Modulum.Api.Migrations
                     b.Property<string>("CampoPK")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JsonObject")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomeTabela")
                         .HasColumnType("nvarchar(max)");
@@ -120,10 +165,9 @@ namespace Modulum.Api.Migrations
                     b.Property<string>("NomeTela")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TelaObject")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("tbl_table", "dbo");
                 });
@@ -381,6 +425,34 @@ namespace Modulum.Api.Migrations
                     b.Navigation("Table");
                 });
 
+            modelBuilder.Entity("modulum.Domain.Entities.DynamicEntity.Relationship", b =>
+                {
+                    b.HasOne("modulum.Domain.Entities.DynamicEntity.Table", "TabelaDestino")
+                        .WithMany("RelacionamentosComoDestino")
+                        .HasForeignKey("TabelaDestinoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("modulum.Domain.Entities.DynamicEntity.Table", "TabelaOrigem")
+                        .WithMany("RelacionamentosComoOrigem")
+                        .HasForeignKey("TabelaOrigemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TabelaDestino");
+
+                    b.Navigation("TabelaOrigem");
+                });
+
+            modelBuilder.Entity("modulum.Domain.Entities.DynamicEntity.Table", b =>
+                {
+                    b.HasOne("modulum.Infrastructure.Models.Identity.ModulumUser", null)
+                        .WithMany("Tables")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("modulum.Infrastructure.Models.Identity.ModulumRoleClaim", b =>
                 {
                     b.HasOne("modulum.Infrastructure.Models.Identity.ModulumRole", null)
@@ -420,10 +492,16 @@ namespace Modulum.Api.Migrations
             modelBuilder.Entity("modulum.Domain.Entities.DynamicEntity.Table", b =>
                 {
                     b.Navigation("Fields");
+
+                    b.Navigation("RelacionamentosComoDestino");
+
+                    b.Navigation("RelacionamentosComoOrigem");
                 });
 
             modelBuilder.Entity("modulum.Infrastructure.Models.Identity.ModulumUser", b =>
                 {
+                    b.Navigation("Tables");
+
                     b.Navigation("TwoFactors");
                 });
 #pragma warning restore 612, 618
