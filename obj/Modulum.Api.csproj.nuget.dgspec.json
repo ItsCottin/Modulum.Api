@@ -98,19 +98,19 @@
             },
             "RCF.Modulum.Application": {
               "target": "Package",
-              "version": "[0.0.3-beta.5, )"
+              "version": "[0.0.3-beta.6, )"
             },
             "RCF.Modulum.Infrastructure": {
               "target": "Package",
-              "version": "[0.0.3-beta.9, )"
+              "version": "[0.0.4-beta.1, )"
             },
             "RCF.Modulum.Infrastructure.Shared": {
               "target": "Package",
-              "version": "[0.0.2-beta.2, )"
+              "version": "[0.0.2-beta.3, )"
             },
             "RCF.Modulum.Shared": {
               "target": "Package",
-              "version": "[0.0.3-beta.4, )"
+              "version": "[0.0.3-beta.5, )"
             },
             "Serilog.Enrichers.Environment": {
               "target": "Package",

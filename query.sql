@@ -41,6 +41,7 @@ END
 -- DROP TABLE [dbo].[tbl_user_token];
 -- DROP TABLE [dbo].[tbl_user_claim];
 -- DROP TABLE [dbo].[tbl_user];
+-- DROP TABLE [dbo].tbl_versao
 
 -- DECLARE @ID VARCHAR(100) = '9111805e-c943-43b2-97b5-8f6917b125aa'
 -- DELETE FROM tbl_user WHERE Id = @ID
@@ -64,11 +65,17 @@ END
 -- DROP TABLE Professor
 -- DELETE FROM tbl_role
 -- DELETE FROM tbl_user
+-- DELETE FROM tbl_relationship
 
 -- TRUNCATE TABLE tbl_versao
 -- DELETE FROM tbl_user WHERE Id = 6
 -- DELETE FROM tbl_two_factor WHERE IdUser = 6
 -- DELETE FROM tbl_user_role WHERE UserId = 6
+-- DELETE FROM tbl_field WHERE Id = 30
+
+--ALTER TABLE _Aluno_1 DROP COLUMN Id__Cursos_1
+--ALTER TABLE _Aluno_1 DROP CONSTRAINT FK__Aluno_1__Cursos_1_Id
+
 
 SELECT Email, Code,* FROM tbl_user u INNER JOIN tbl_two_factor ON u.Id = IdUser WHERE u.Id = '5'
 SELECT * FROM tbl_two_factor
@@ -77,19 +84,27 @@ SELECT * FROM tbl_role
 SELECT * FROM tbl_user_role
 SELECT * FROM tbl_user_claim
 SELECT * FROM tbl_user_token
-SELECT * FROM tbl_table
+
 SELECT * FROM Tela_para_deletar_3
 SELECT * FROM tbl_field WHERE TableId = 23
-SELECT * FROM tbl_relationship
 SELECT * FROM tbl_versao
-SELECT * FROM Cadastro_de_Aluno_3
+SELECT * FROM _Aluno_1
 SELECT * FROM Funcionario
+
+SELECT Id, _Nome_do_Professor FROM _System_of_a_Down_1;
+
+SELECT * FROM _System_of_a_Down_1
+SELECT * FROM _Professores_1
+SELECT * FROM tbl_table
+SELECT * FROM tbl_field
+SELECT * FROM tbl_relationship
+
+SELECT Id, _Nome_do_Curso FROM _Cursos_1;
 
 SELECT COLUMNPROPERTY(OBJECT_ID('Cadastro_de_Aluno_3'), 'Id', 'IsIdentity') AS IsIdentity
 SELECT COLUMNPROPERTY(OBJECT_ID('CadastroParaChurrasco_1'), 'Id', 'IsIdentity') AS IsIdentity
 
 CREATE TABLE _1121_3 (Id INT PRIMARY KEY IDENTITY(1,1), _111 VARCHAR(2));
-
 
 --CREATE TABLE Aluno_1_Nova (
 --    Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -135,4 +150,15 @@ WHERE
 
 
 
+DROP TABLE Aluno_7
+DROP TABLE Aluno_42
+DROP TABLE So_texto_42
+DROP TABLE Aluno_1
+DROP TABLE Aluno_45
+DROP TABLE Teste_45
+DROP TABLE CadastroParaChurrasco_1
+DROP TABLE fgdgfd_1
+DROP TABLE testecadastro_1
+DROP TABLE Opa_1
+DROP TABLE System_54
 

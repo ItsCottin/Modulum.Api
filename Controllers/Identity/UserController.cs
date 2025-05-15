@@ -10,6 +10,7 @@ using nodulum.Application.Requests.Identity;
 using modulum.Shared.Routes;
 using modulum.Application.Requests.Account;
 using modulum.Application.Interfaces.Services;
+using RCF.Modulum.Application.Requests.Identity;
 
 namespace modulum.Server.Controllers.Identity
 {
@@ -78,6 +79,18 @@ namespace modulum.Server.Controllers.Identity
         //{
         //    return Ok(await _userService.UpdateRolesAsync(request));
         //}
+
+        /// <summary>
+        /// Register a User
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>Status 200 OK</returns>
+        [AllowAnonymous]
+        [HttpPost(EndpointsUser.CadastroExterno)]
+        public async Task<IActionResult> CadastroExternoAsync(CadastroExternoRequest request)
+        {
+            return Ok(await _userService.CadastroExterno(request));
+        }
 
         /// <summary>
         /// Register a User
