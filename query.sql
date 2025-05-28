@@ -57,25 +57,27 @@ END
 
 --UPDATE tbl_user SET NomeCompleto = 'Administrador Teste'
 --WHERE Id = '6'
+drop table _Aluno_1
+drop table _Cursos_1
+drop table _Professores_1
+drop table _Disciplina_1
+drop table _Processos_Juridicos_11
+drop table _Informacoes_de_Clientes_11
 
--- DELETE FROM tbl_table
--- DELETE FROM tbl_field
 -- DROP TABLE _1121_3
 -- DROP TABLE Funcionario
 -- DROP TABLE Professor
 -- DELETE FROM tbl_role
 -- DELETE FROM tbl_user
+
+-- DELETE FROM tbl_table
+-- DELETE FROM tbl_field
 -- DELETE FROM tbl_relationship
 
 -- TRUNCATE TABLE tbl_versao
--- DELETE FROM tbl_user WHERE Id = 6
+-- DELETE FROM tbl_user WHERE Id = 8
 -- DELETE FROM tbl_two_factor WHERE IdUser = 6
 -- DELETE FROM tbl_user_role WHERE UserId = 6
--- DELETE FROM tbl_field WHERE Id = 30
-
---ALTER TABLE _Aluno_1 DROP COLUMN Id__Cursos_1
---ALTER TABLE _Aluno_1 DROP CONSTRAINT FK__Aluno_1__Cursos_1_Id
-
 
 SELECT Email, Code,* FROM tbl_user u INNER JOIN tbl_two_factor ON u.Id = IdUser WHERE u.Id = '5'
 SELECT * FROM tbl_two_factor
@@ -85,21 +87,36 @@ SELECT * FROM tbl_user_role
 SELECT * FROM tbl_user_claim
 SELECT * FROM tbl_user_token
 
-SELECT * FROM Tela_para_deletar_3
 SELECT * FROM tbl_field WHERE TableId = 23
 SELECT * FROM tbl_versao
-SELECT * FROM _Aluno_1
-SELECT * FROM Funcionario
+
+
 
 SELECT Id, _Nome_do_Professor FROM _System_of_a_Down_1;
 
 SELECT * FROM _System_of_a_Down_1
 SELECT * FROM _Professores_1
-SELECT * FROM tbl_table
+SELECT * FROM tbl_table t inner join tbl_field on t.id = TableId
 SELECT * FROM tbl_field
-SELECT * FROM tbl_relationship
+SELECT * FROM tbl_relationship r inner join tbl_table t on r.TabelaOrigemId = t.Id
+SELECT * FROM _Curso_1
+SELECT * FROM _Aluno_1
+SELECT * FROM _Disciplina_1;
+SELECT * FROM _Campus_1
 
-SELECT Id, _Nome_do_Curso FROM _Cursos_1;
+-- DELETE FROM tbl_field WHERE Id = 70
+-- DELETE FROM tbl_relationship WHERE Id = 14
+
+--ALTER TABLE _Aluno_1 DROP COLUMN Id__Campus_1
+--ALTER TABLE _Aluno_1 DROP CONSTRAINT FK__Aluno_1_Id__Campus_1_REF__Campus_1_Id
+
+SELECT COUNT(1) FROM _Aluno_1 WHERE Id__Curso_1 = 1;
+
+-- UPDATE tbl_relationship
+-- SET CampoParaExibicaoRelacionamento = '_Nome'
+-- WHERE Id = 5
+
+--DELETE FROM _Curso_1 WHERE Id = 1;
 
 SELECT COLUMNPROPERTY(OBJECT_ID('Cadastro_de_Aluno_3'), 'Id', 'IsIdentity') AS IsIdentity
 SELECT COLUMNPROPERTY(OBJECT_ID('CadastroParaChurrasco_1'), 'Id', 'IsIdentity') AS IsIdentity

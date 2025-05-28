@@ -165,27 +165,5 @@ namespace Modulum.Api.Controllers.Dynamic
         {
             return Ok(await _dynamicEntityService.DeleteMapTableAsync(IdTable));
         }
-
-        /// <summary>
-        /// Change Password
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns>Status 200 OK</returns>
-        [HttpPost(EndpointsDynamic.AlterRelacionamento)]
-        public async Task<ActionResult> AlterRelacionamento(List<CreateDynamicRelationshipRequest> model)
-        {
-            return Ok(await _dynamicEntityService.AlterRelacionamento(model));
-        }
-
-        /// <summary>
-        /// Change Password
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Status 200 OK</returns>
-        [HttpGet(EndpointsDynamic.ConsultarRelacionamento + "/{id}")]
-        public async Task<ActionResult> ConsultarRelacionamento(int id)
-        {
-            return Ok(await _dynamicEntityService.ConsultarRelacionamento(id));
-        }
     }
 }
