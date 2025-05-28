@@ -12,8 +12,8 @@ using modulum.Infrastructure.Contexts;
 namespace Modulum.Api.Migrations
 {
     [DbContext(typeof(ModulumContext))]
-    [Migration("20250516015016_addColumn3")]
-    partial class addColumn3
+    [Migration("20250528210350_versao2")]
+    partial class versao2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,9 +191,8 @@ namespace Modulum.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PacoteRaiz")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProjetoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("RequestedVersion")
                         .IsRequired()
@@ -205,7 +204,30 @@ namespace Modulum.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProjetoId");
+
                     b.ToTable("tbl_versao", "dbo");
+                });
+
+            modelBuilder.Entity("modulum.Domain.Entities.Projeto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Versao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tbl_projeto", "dbo");
                 });
 
             modelBuilder.Entity("modulum.Infrastructure.Models.Identity.ModulumRole", b =>
@@ -275,7 +297,9 @@ namespace Modulum.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(14)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(14)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -459,6 +483,17 @@ namespace Modulum.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("modulum.Domain.Entities.NugetPacote", b =>
+                {
+                    b.HasOne("modulum.Domain.Entities.Projeto", "Projeto")
+                        .WithMany("Pacotes")
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projeto");
+                });
+
             modelBuilder.Entity("modulum.Infrastructure.Models.Identity.ModulumRoleClaim", b =>
                 {
                     b.HasOne("modulum.Infrastructure.Models.Identity.ModulumRole", null)
@@ -502,6 +537,11 @@ namespace Modulum.Api.Migrations
                     b.Navigation("RelacionamentosComoDestino");
 
                     b.Navigation("RelacionamentosComoOrigem");
+                });
+
+            modelBuilder.Entity("modulum.Domain.Entities.Projeto", b =>
+                {
+                    b.Navigation("Pacotes");
                 });
 
             modelBuilder.Entity("modulum.Infrastructure.Models.Identity.ModulumUser", b =>

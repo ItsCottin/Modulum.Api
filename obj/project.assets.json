@@ -2091,7 +2091,7 @@
           }
         }
       },
-      "RCF.Modulum.Application/0.0.3-beta.8": {
+      "RCF.Modulum.Application/0.0.3-beta.9": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "14.0.0",
@@ -2102,7 +2102,7 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.EntityFrameworkCore": "8.0.14",
           "Newtonsoft.Json": "13.0.3",
-          "RCF.Modulum.Domain": "0.0.2-beta.8",
+          "RCF.Modulum.Domain": "0.0.2-beta.9",
           "RCF.Modulum.Shared": "0.0.3-beta.6",
           "System.Linq.Dynamic.Core": "1.6.0.2"
         },
@@ -2113,7 +2113,7 @@
           "lib/net8.0/RCF.Modulum.Application.dll": {}
         }
       },
-      "RCF.Modulum.Domain/0.0.2-beta.8": {
+      "RCF.Modulum.Domain/0.0.2-beta.9": {
         "type": "package",
         "dependencies": {
           "RCF.Modulum.Shared": "0.0.3-beta.6"
@@ -2125,7 +2125,7 @@
           "lib/net8.0/RCF.Modulum.Domain.dll": {}
         }
       },
-      "RCF.Modulum.Infrastructure/0.0.4-beta.4": {
+      "RCF.Modulum.Infrastructure/0.0.4-beta.6": {
         "type": "package",
         "dependencies": {
           "AutoMapper": "14.0.0",
@@ -2138,7 +2138,7 @@
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.14",
-          "RCF.Modulum.Application": "0.0.3-beta.8",
+          "RCF.Modulum.Application": "0.0.3-beta.9",
           "RCF.Modulum.Shared": "0.0.3-beta.6",
           "SendGrid": "9.29.3"
         },
@@ -2153,12 +2153,12 @@
           }
         }
       },
-      "RCF.Modulum.Infrastructure.Shared/0.0.2-beta.4": {
+      "RCF.Modulum.Infrastructure.Shared/0.0.2-beta.5": {
         "type": "package",
         "dependencies": {
           "MailKit": "4.11.0",
           "MimeKit": "4.11.0",
-          "RCF.Modulum.Application": "0.0.3-beta.8"
+          "RCF.Modulum.Application": "0.0.3-beta.9"
         },
         "compile": {
           "lib/net8.0/RCF.Modulum.Infrastructure.Shared.dll": {}
@@ -6186,38 +6186,38 @@
         "packageIcon.png"
       ]
     },
-    "RCF.Modulum.Application/0.0.3-beta.8": {
-      "sha512": "oJ6i6FE7Z2+MvzniVt6Ufc08TPUGTrce6hv+RSfAaaK0IWpjK1gbMvTA6oShZvkTKg7LQe8/81JQDqpSjKmfDA==",
+    "RCF.Modulum.Application/0.0.3-beta.9": {
+      "sha512": "69FOP1h2DSpC2R6kHz+YSWmv5Cu2yR3w98VXo9P5kAROtpfeDpQr1Jzn1ksEWEWlog2oJOC3noTiXHNlX5OPhg==",
       "type": "package",
-      "path": "rcf.modulum.application/0.0.3-beta.8",
+      "path": "rcf.modulum.application/0.0.3-beta.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Licence.txt",
         "README.md",
         "lib/net8.0/RCF.Modulum.Application.dll",
-        "rcf.modulum.application.0.0.3-beta.8.nupkg.sha512",
+        "rcf.modulum.application.0.0.3-beta.9.nupkg.sha512",
         "rcf.modulum.application.nuspec"
       ]
     },
-    "RCF.Modulum.Domain/0.0.2-beta.8": {
-      "sha512": "9FhJEnYy4o4ahVbxgeoG/yuquzcFSid4XMMivGavaCl/uRTwJU9IEQvx5WtGjve8jHbEVIZ8WU68LBu0AKFP4g==",
+    "RCF.Modulum.Domain/0.0.2-beta.9": {
+      "sha512": "OYx1+5vKfnsMi7FtEbfdU1w/9WXnQcXIQ5klMHOvbdyiYcVeys4Mp3dt8wTf5xVeZmDjv6EaGiE6dFRTbNL/BA==",
       "type": "package",
-      "path": "rcf.modulum.domain/0.0.2-beta.8",
+      "path": "rcf.modulum.domain/0.0.2-beta.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Licence.txt",
         "README.md",
         "lib/net8.0/RCF.Modulum.Domain.dll",
-        "rcf.modulum.domain.0.0.2-beta.8.nupkg.sha512",
+        "rcf.modulum.domain.0.0.2-beta.9.nupkg.sha512",
         "rcf.modulum.domain.nuspec"
       ]
     },
-    "RCF.Modulum.Infrastructure/0.0.4-beta.4": {
-      "sha512": "NTbXfaYNY2HBhSbvRo/ZiFJpxqa6vBa90WoxsXweJdwwgBFThYwpGAp1aWWU2l7WhTSrIg5wbOlPvrFjDKhqyg==",
+    "RCF.Modulum.Infrastructure/0.0.4-beta.6": {
+      "sha512": "73SA/tP3OnHD9EiTVgHSbELWzsrytWRJSLCsPLelxMNuutB/PC5OAAAqZVc+9hOLZZMPrV/D9m4LQJeV1pOzrg==",
       "type": "package",
-      "path": "rcf.modulum.infrastructure/0.0.4-beta.4",
+      "path": "rcf.modulum.infrastructure/0.0.4-beta.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6225,21 +6225,21 @@
         "README.md",
         "lib/net8.0/RCF.Modulum.Infrastructure.dll",
         "lib/net8.0/RCF.Modulum.Infrastructure.runtimeconfig.json",
-        "rcf.modulum.infrastructure.0.0.4-beta.4.nupkg.sha512",
+        "rcf.modulum.infrastructure.0.0.4-beta.6.nupkg.sha512",
         "rcf.modulum.infrastructure.nuspec"
       ]
     },
-    "RCF.Modulum.Infrastructure.Shared/0.0.2-beta.4": {
-      "sha512": "zS64DFDKneGb/kYZ3Z+hYwNUJLV4wvTooJVpSydusGxEhZ3XJInfa2EQ6wO5kQfA1V6ZrlVYMx+XUznoS+3OhA==",
+    "RCF.Modulum.Infrastructure.Shared/0.0.2-beta.5": {
+      "sha512": "2SUGMB9tjZlTBuXMX8gCMYFrHD0YGOsU95Kb3mue9HWTwl34PI4qWhykc46hi87bM4wSwm5umnfXMFiKQlTR/Q==",
       "type": "package",
-      "path": "rcf.modulum.infrastructure.shared/0.0.2-beta.4",
+      "path": "rcf.modulum.infrastructure.shared/0.0.2-beta.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Licence.txt",
         "README.md",
         "lib/net8.0/RCF.Modulum.Infrastructure.Shared.dll",
-        "rcf.modulum.infrastructure.shared.0.0.2-beta.4.nupkg.sha512",
+        "rcf.modulum.infrastructure.shared.0.0.2-beta.5.nupkg.sha512",
         "rcf.modulum.infrastructure.shared.nuspec"
       ]
     },
@@ -7851,9 +7851,9 @@
       "Microsoft.EntityFrameworkCore >= 8.0.14",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.14",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.21.0",
-      "RCF.Modulum.Application >= 0.0.3-beta.8",
-      "RCF.Modulum.Infrastructure >= 0.0.4-beta.4",
-      "RCF.Modulum.Infrastructure.Shared >= 0.0.2-beta.4",
+      "RCF.Modulum.Application >= 0.0.3-beta.9",
+      "RCF.Modulum.Infrastructure >= 0.0.4-beta.6",
+      "RCF.Modulum.Infrastructure.Shared >= 0.0.2-beta.5",
       "RCF.Modulum.Shared >= 0.0.3-beta.6",
       "Serilog.Enrichers.Environment >= 3.0.1",
       "Serilog.Extensions.Hosting >= 8.0.0",
@@ -7963,15 +7963,15 @@
           },
           "RCF.Modulum.Application": {
             "target": "Package",
-            "version": "[0.0.3-beta.8, )"
+            "version": "[0.0.3-beta.9, )"
           },
           "RCF.Modulum.Infrastructure": {
             "target": "Package",
-            "version": "[0.0.4-beta.4, )"
+            "version": "[0.0.4-beta.6, )"
           },
           "RCF.Modulum.Infrastructure.Shared": {
             "target": "Package",
-            "version": "[0.0.2-beta.4, )"
+            "version": "[0.0.2-beta.5, )"
           },
           "RCF.Modulum.Shared": {
             "target": "Package",

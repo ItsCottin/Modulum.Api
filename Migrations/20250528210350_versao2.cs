@@ -6,13 +6,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Modulum.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class resetdb : Migration
+    public partial class versao2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "dbo");
+
+            migrationBuilder.CreateTable(
+                name: "tbl_projeto",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Versao = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_projeto", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "tbl_role",
@@ -39,6 +54,7 @@ namespace Modulum.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeCompleto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cpf = table.Column<string>(type: "varchar(14)", unicode: false, maxLength: 14, nullable: true),
                     RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsCadastroFinalizado = table.Column<bool>(type: "bit", nullable: true, defaultValue: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -67,11 +83,18 @@ namespace Modulum.Api.Migrations
                     RequestedVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ResolvedVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Framework = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PacoteRaiz = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ProjetoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_versao", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tbl_versao_tbl_projeto_ProjetoId",
+                        column: x => x.ProjetoId,
+                        principalSchema: "dbo",
+                        principalTable: "tbl_projeto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -278,6 +301,7 @@ namespace Modulum.Api.Migrations
                     CampoOrigem = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CampoDestino = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NomeConstraint = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsObrigatorio = table.Column<bool>(type: "bit", nullable: false),
                     CampoParaExibicaoRelacionamento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -375,6 +399,12 @@ namespace Modulum.Api.Migrations
                 schema: "dbo",
                 table: "tbl_user_role",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_versao_ProjetoId",
+                schema: "dbo",
+                table: "tbl_versao",
+                column: "ProjetoId");
         }
 
         /// <inheritdoc />
@@ -422,6 +452,10 @@ namespace Modulum.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "tbl_role",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "tbl_projeto",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

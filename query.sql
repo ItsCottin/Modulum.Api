@@ -87,10 +87,13 @@ SELECT * FROM tbl_user_role
 SELECT * FROM tbl_user_claim
 SELECT * FROM tbl_user_token
 
+ALTER TABLE [dbo].[tbl_user] ALTER COLUMN [Cpf] varchar(11) NULL;
+
 SELECT * FROM tbl_field WHERE TableId = 23
-SELECT * FROM tbl_versao
 
+--DELETE FROM tbl_versao
 
+select * from __EFMigrationsHistory
 
 SELECT Id, _Nome_do_Professor FROM _System_of_a_Down_1;
 
@@ -98,14 +101,17 @@ SELECT * FROM _System_of_a_Down_1
 SELECT * FROM _Professores_1
 SELECT * FROM tbl_table t inner join tbl_field on t.id = TableId
 SELECT * FROM tbl_field
-SELECT * FROM tbl_relationship r inner join tbl_table t on r.TabelaOrigemId = t.Id
+SELECT * FROM tbl_relationship r inner join tbl_table t on r.TabelaOrigemId = t.Id inner join tbl_table d on r.TabelaDestinoId = d.Id
 SELECT * FROM _Curso_1
 SELECT * FROM _Aluno_1
 SELECT * FROM _Disciplina_1;
 SELECT * FROM _Campus_1
 
--- DELETE FROM tbl_field WHERE Id = 70
--- DELETE FROM tbl_relationship WHERE Id = 14
+-- DELETE FROM tbl_table WHERE Id = 13
+-- DELETE FROM tbl_field WHERE Id = 80
+
+
+-- DELETE FROM tbl_relationship WHERE Id = 34
 
 --ALTER TABLE _Aluno_1 DROP COLUMN Id__Campus_1
 --ALTER TABLE _Aluno_1 DROP CONSTRAINT FK__Aluno_1_Id__Campus_1_REF__Campus_1_Id

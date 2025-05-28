@@ -16,7 +16,7 @@ namespace modulum.Controllers.Versao
         private readonly IVersao _iversao;
 
         public VersaoController(IVersao iversao)
-        { 
+        {
             _iversao = iversao;
         }
 
@@ -37,9 +37,9 @@ namespace modulum.Controllers.Versao
         /// <returns>Status 200 OK</returns>
         [Authorize(Roles = "Sistema")]
         [HttpPost(EndpointGetVersao.Update)]
-        public async Task<IActionResult> Update(PackageListResultRequest request)
+        public async Task<IActionResult> Update([FromHeader(Name = "versao")] string? versao, PackageListResultRequest request)
         {
-            var result = await _iversao.AddEditPacotes(request);
+            var result = await _iversao.AddEditPacotes(versao, request);
             return Ok();
         }
     }
